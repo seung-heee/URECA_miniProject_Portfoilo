@@ -10,7 +10,7 @@
 <body class="">
   <!-- 네비게이션바 -->
   <nav class="d-flex justify-content-between align-items-center p-3 position-fixed mx-auto top-0 end-0" style="width: 50%">
-    <a href="#"><div class="fs-3 logoFont ms-3">노승희</div></a>
+    <a href="#"><div class="fs-3 logoFont ms-3 it_logo">노승희</div></a>
     <div>
       <a href="index.html"><span class="me-3 fw-bold">소개</span></a>
       <a href="project.html"><span class="me-3">프로젝트</span></a>
@@ -27,14 +27,14 @@
       <div class="min-vh-100 d-flex justify-content-center align-items-center">
         <div class="w-75 mx-auto">
           <div class="d-flex flex-column justify-content-start mb-4 fw-bold">
-            <span class="fs-2">노승희</span>
-            <span class="fs-4">Front-End Developer</span>
+            <span class="fs-2 it_name">이름</span>
+            <span class="fs-4 it_role">직책</span>
           </div>
 
           <div class="d-flex flex-column justify-content-start fs-5">
-            <div class="d-flex"><span class="fw-bold">전화번호 : </span><span>010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">이메일 : </span><span>010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">주소 : </span><span>010-1111-2222</span></div>
+            <div class="d-flex"><span class="fw-bold">전화번호 : </span><span class="it_phone">전화번호</span></div>
+            <div class="d-flex"><span class="fw-bold">이메일 : </span><span class="it_email">이메일</span></div>
+            <div class="d-flex"><span class="fw-bold">주소 : </span><span class="it_address">주소</span></div>
           </div>
         </div>
       </div>
@@ -46,14 +46,8 @@
             <span class="fs-2">소개</span>
           </div>
 
-          <div>
-            단락입니다. 나만의 텍스트를 추가하거나 글꼴을
-            변경하려면 여기를 클릭하세요. 해당 섹션에
-            자기 소개 내용을 추가할 수 있습니다. 자세하
-            고 다양한 소개 내용으로 방문자의 관심을 유
-            도하세요. 내용에 따라 글꼴도 변경해보세요.
-            글꼴, 크기, 색상, 기울기, 음영 등 디자인을 변
-            경하면 가독성을 높일 수 있습니다.
+          <div class="it_introduction">
+          	자기소개 내용
           </div>
         </div>
       </div>
@@ -118,12 +112,12 @@
           </div>
 
           <div class="d-flex flex-column justify-content-start fs-5">
-            <div class="d-flex"><span class="fw-bold">전화번호 : </span><span> 010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">이메일 : </span><span> 010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">주소 : </span><span> 010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">Github : </span><span>010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">Tistory : </span><span> 010-1111-2222</span></div>
-            <div class="d-flex"><span class="fw-bold">Instagram : </span><span> 010-1111-2222</span></div>
+            <div class="d-flex"><span class="fw-bold">전화번호 : </span><span class="it_phone1">전화번호</span></div>
+            <div class="d-flex"><span class="fw-bold">이메일 : </span><span class="it_email1">이메일</span></div>
+            <div class="d-flex"><span class="fw-bold">주소 : </span><span class="it_address1">주소</span></div>
+            <div class="d-flex"><span class="fw-bold">Github : </span><a href=""><span class="it_github">깃허브</span></a></div>
+            <div class="d-flex"><span class="fw-bold">Tistory : </span><span class="it_tistory">티스토리</span></div>
+            <div class="d-flex"><span class="fw-bold">Instagram : </span><span class="it_instagram">인스타그램</span></div>
           </div>
         </div>
       </div>
@@ -132,7 +126,40 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 <script type="text/javascript">
-	
+$.ajax({
+	url:"/intro/list",
+	success:function(data){
+		let info = data.data[0]
+		
+		// 클래스 이름으로 요소를 얻는 간단한 함수
+	    const C = className => document.getElementsByClassName(className);
+
+	    // HTML 요소에 데이터 삽입
+	    const setTextContent = (className, text) => {
+	        const elements = C(className);
+	        if (elements.length > 0) {
+	            elements[0].textContent = text;
+	        } else {
+	            console.error(`클래스 "${className}"를 가진 요소가 없습니다.`);
+	        }
+	    };
+
+	    // 데이터 삽입
+	    setTextContent('it_logo', info.name);
+	    setTextContent('it_name', info.name);
+	    setTextContent('it_role', info.role);
+	    setTextContent('it_phone', info.phoneNumber);
+	    setTextContent('it_email', info.email);
+	    setTextContent('it_address', info.address);
+	    setTextContent('it_introduction', info.introduction);
+	    setTextContent('it_github', info.github);
+	    setTextContent('it_tistory', info.tistory);
+	    setTextContent('it_instagram', info.instagram);
+	    setTextContent('it_phone1', info.phoneNumber);
+	    setTextContent('it_email1', info.email);
+	    setTextContent('it_address1', info.address);
+	}
+})
 </script>
 </body>
 </html>

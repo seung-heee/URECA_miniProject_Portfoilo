@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Intro</title>
+</head>
+<body>
+  <h1>Intro 등록</h1>
+  <div>
+    <div><a href="board.html">게시물 목록</a></div>
+
+    <form action="intro/main" id="it_form">
+      <label for="it_name">이름</label>
+      <input type="text" id="it_name" name="name" required="required"> <br/>
+      
+      <label for="it_role">직책</label>
+      <input type="text" id="it_role" name="role" required="required"> <br/>
+      
+      <label for="it_phone">전화번호</label>
+      <input type="text" id="it_phone" name="phone" required="required"> <br/>
+      
+      <label for="it_email">이메일</label>
+      <input type="text" id="it_email" name="email" required="required"> <br/>
+      
+      <label for="it_address">주소</label>
+      <input type="text" id="it_address" name="address" required="required"> <br/>
+      
+      <input type="submit" value="소개 등록">
+    </form>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type="text/javascript">
+    $("#it_form").submit(function(event){
+      event.preventDefault(); // 기본 폼 제출 동작 막기
+      
+      var formData = new FormData(this);
+      $.ajax({
+        url: "/intro/count",
+        type: "POST",
+        data: formData,
+        success: function(data){
+          if(data.code == "ok"){
+            location.href = "board.html";
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

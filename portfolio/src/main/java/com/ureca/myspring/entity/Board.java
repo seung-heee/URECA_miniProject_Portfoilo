@@ -18,6 +18,6 @@ public class Board {
 	private int no;
 	private String title;
 	private String content;
-    private String imagePath; // 파일 경로 저장
+    private String image; // 파일 경로 저장
 	private Date date;
 }

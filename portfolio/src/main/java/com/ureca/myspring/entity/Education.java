@@ -24,8 +24,7 @@ public class Education {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-    @ManyToOne
-    private Intro intro; // Intro와의 관계 설정
+    private Integer intro_id;
     
     @Column(name = "year")
     private Integer year;

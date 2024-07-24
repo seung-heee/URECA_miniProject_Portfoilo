@@ -59,24 +59,8 @@
             <span class="fs-2">활동</span>
           </div>
 
-          <div>
-            <ul class="mb-3">
-              <li class="fs-6">2024.06~</li>
-              <li class="fs-5 fw-bold">[LG 유플러스] 유레카 SW 교육과정</li>
-              <li class="fs-6">프론트엔드 개발자</li>
-            </ul>
-
-            <ul class="mb-3">
-              <li class="fs-6">2023.03~</li>
-              <li class="fs-5 fw-bold">IT 창업동아리 멋쟁이사자처럼</li>
-              <li class="fs-6">11기 운영진 & 12기 대표</li>
-            </ul>
-
-            <ul class="mb-3">
-              <li class="fs-6">2024.02~2024.03</li>
-              <li class="fs-5 fw-bold">[KakaoXgoorm] GoormthonUniv 2기</li>
-              <li class="fs-6">프론트엔드 개발 참여</li>
-            </ul>
+          <div id="it_activity">
+            <!-- 활동 내용 -->
           </div>
         </div>
       </div>
@@ -88,7 +72,7 @@
             <span class="fs-2">학력</span>
           </div>
 
-          <div>
+          <div id="it_education">
             <ul class="mb-3">
               <li class="fs-6">2020.02~2025.02</li>
               <li class="fs-5 fw-bold">성결대학교 재학</li>
@@ -126,6 +110,7 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 <script type="text/javascript">
+/* 메인 소개 */
 $.ajax({
 	url:"/intro/list",
 	success:function(data){
@@ -160,6 +145,38 @@ $.ajax({
 	    setTextContent('it_address1', info.address);
 	}
 })
+
+// 활동
+$.ajax({
+		url:"/activity/list",
+		success:function(data){
+			let s = "";
+			for(let d of data.data){
+				s+="<ul class='mb-3'>"
+				s+="<li class='fs-6'>"+ d.year +"</li>"
+				s+="<li class='fs-5 fw-bold'>"+ d.description +"</li>"
+				s+="<li class='fs-6'>"+ d.role +"</li>"
+				s+="</ul>"
+			}
+			$("#it_activity").html(s)
+		}
+	})
+	
+// 학력
+$.ajax({
+		url:"/education/list",
+		success:function(data){
+			let s = "";
+			for(let d of data.data){
+				s+="<ul class='mb-3'>"
+				s+="<li class='fs-6'>"+ d.year +"</li>"
+				s+="<li class='fs-5 fw-bold'>"+ d.description +"</li>"
+				s+="<li class='fs-6'>"+ d.role +"</li>"
+				s+="</ul>"
+			}
+			$("#it_education").html(s)
+		}
+	})
 </script>
 </body>
 </html>

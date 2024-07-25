@@ -49,3 +49,10 @@ ul, li {
 .scrollable-content {
   overflow-y: auto;
 }
+
+.editCell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}

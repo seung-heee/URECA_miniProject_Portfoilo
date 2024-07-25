@@ -1,51 +1,140 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Intro</title>
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
 <body>
-  <h1>Intro 등록</h1>
-  <div>
-    <div><a href="board.html">게시물 목록</a></div>
+  <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <h1>정보</h1>
+    <div class="mt-4">
+      <form action="intro/main" id="it_form" style="width: 320px;">
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_name">이름 : </label></div>
+          <div class="fw-bold it_name"></div>
+        </div>
 
-    <form action="intro/main" id="it_form">
-      <label for="it_name">이름</label>
-      <input type="text" id="it_name" name="name" required="required"> <br/>
-      
-      <label for="it_role">직책</label>
-      <input type="text" id="it_role" name="role" required="required"> <br/>
-      
-      <label for="it_phone">전화번호</label>
-      <input type="text" id="it_phone" name="phone" required="required"> <br/>
-      
-      <label for="it_email">이메일</label>
-      <input type="text" id="it_email" name="email" required="required"> <br/>
-      
-      <label for="it_address">주소</label>
-      <input type="text" id="it_address" name="address" required="required"> <br/>
-      
-      <input type="submit" value="소개 등록">
-    </form>
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_role">직책 : </label></div>
+          <div class="fw-bold it_role"></div>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_phone">전화번호 : </label></div>
+          <div class="fw-bold it_phone"></div>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_email">이메일 : </label></div>
+          <div class="fw-bold it_email"></div>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_address">주소 : </label></div>
+          <div class="fw-bold it_address"></div>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_github">깃허브 : </label></div>
+          <div class="fw-bold it_github"></div>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_tistory">블로그 : </label></div>
+          <div class="fw-bold it_tistory"></div>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_instagram">인스타그램 : </label></div>
+          <div class="fw-bold it_instagram"></div>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
+          <div class="fw-bold it_introduction"></div>
+        </div>
+
+        <div class="text-center flex w-100 mt-4">
+	        <!-- <input type="submit" value="수정하기" class="w-100"> -->
+       		<a id="editLink" href="#">수정하기</a>
+        </div>
+      </form>
+    </div>
   </div>
+  
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+<script type="text/javascript">
+/* 메인 소개 */
+$.ajax({
+	url:"/intro/list",
+	success:function(data){
+		let info = data.data[0]
+		console.log(info)
+		// 클래스 이름으로 요소를 얻는 간단한 함수
+	    const C = className => document.getElementsByClassName(className);
 
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script type="text/javascript">
-    $("#it_form").submit(function(event){
-      event.preventDefault(); // 기본 폼 제출 동작 막기
-      
-      var formData = new FormData(this);
-      $.ajax({
-        url: "/intro/count",
-        type: "POST",
-        data: formData,
-        success: function(data){
-          if(data.code == "ok"){
-            location.href = "board.html";
-          }
-        }
-      });
-    });
-  </script>
+	    // HTML 요소에 데이터 삽입
+	    const setTextContent = (className, text) => {
+	        const elements = C(className);
+	        if (elements.length > 0) {
+	            elements[0].textContent = text;
+	        } else {
+	            console.error(`클래스 "${className}"를 가진 요소가 없습니다.`);
+	        }
+	    };
+
+	    // 데이터 삽입
+	    setTextContent('it_name', info.name);
+	    setTextContent('it_role', info.role);
+	    setTextContent('it_phone', info.phoneNumber);
+	    setTextContent('it_email', info.email);
+	    setTextContent('it_address', info.address);
+	    setTextContent('it_introduction', info.introduction);
+	    setTextContent('it_github', info.github);
+	    setTextContent('it_tistory', info.tistory);
+	    setTextContent('it_instagram', info.instagram);
+	    
+	 	// 링크 수정
+	    const editLink = document.getElementById('editLink');
+	    editLink.href = "./introAdminEdit.html?id=" + info.id;
+	}
+})
+
+// 활동
+$.ajax({
+		url:"/activity/list",
+		success:function(data){
+			let s = "";
+			for(let d of data.data){
+				s+="<ul class='mb-3'>"
+				s+="<li class='fs-6'>"+ d.year +"</li>"
+				s+="<li class='fs-5 fw-bold'>"+ d.description +"</li>"
+				s+="<li class='fs-6'>"+ d.role +"</li>"
+				s+="</ul>"
+			}
+			$("#it_activity").html(s)
+		}
+	})
+	
+// 학력
+$.ajax({
+		url:"/education/list",
+		success:function(data){
+			let s = "";
+			for(let d of data.data){
+				s+="<ul class='mb-3'>"
+				s+="<li class='fs-6'>"+ d.year +"</li>"
+				s+="<li class='fs-5 fw-bold'>"+ d.description +"</li>"
+				s+="<li class='fs-6'>"+ d.role +"</li>"
+				s+="</ul>"
+			}
+			$("#it_education").html(s)
+		}
+	})
+</script>
 </body>
 </html>

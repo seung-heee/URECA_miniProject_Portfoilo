@@ -1,20 +1,14 @@
 package com.ureca.myspring.entity;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-
-import java.util.List;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Getter
@@ -27,7 +21,10 @@ public class Intro {
 	
 	private String name;
 	private String role;
+	
+	@Column(name = "phone_number")
 	private String phoneNumber;
+	
 	private String email;
 	private String address;
 	@Lob

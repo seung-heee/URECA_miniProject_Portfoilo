@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+<body>
+  <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <h1>소개 수정</h1>
+    <div class="mt-4">
+    
+      <form id="it_form" style="width: 400px;">
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_name">이름 : </label></div>
+          <input type="text" id="it_name" name="name" required="required" placeholder=""><br/>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_role">직책 : </label></div>
+          <input type="text" id="it_role" name="role" required="required" > <br/>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_phone">전화번호 : </label></div>
+          <input type="text" id="it_phone" name="phoneNumber" required="required"> <br/>
+        </div>
+
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_email">이메일 : </label></div>
+          <input type="text" id="it_email" name="email" required="required"> <br/>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_address">주소 : </label></div>
+          <input type="text" id="it_address" name="address" required="required"> <br/>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_github">깃허브 : </label></div>
+          <input type="text" id="it_github" name="github" required="required"> <br/>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_tistory">티스토리 : </label></div>
+          <input type="text" id="it_tistory" name="tistory" required="required"> <br/>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_instagram">인스타그램 : </label></div>
+          <input type="text" id="it_instagram" name="instagram" required="required"> <br/>
+        </div>
+        
+        <div class="editCell">
+          <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
+          <textarea id="it_introduction" name="introduction" required="required"></textarea>
+        </div>
+
+        <div class="text-center flex w-100 mt-4">
+        	<input type="submit" value="수정 완료" class="w-100">
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+<script type="text/javascript">
+$.ajax({
+	url:"/intro/list", 
+	success: function(data){
+		if(data.code=="error"){
+			alert(data.message)
+			history.back()
+			return
+		}
+		$("#it_name").val(data.data[0].name)
+		$("#it_role").val(data.data[0].role)
+		$("#it_phone").val(data.data[0].phoneNumber)
+		$("#it_email").val(data.data[0].email)
+		$("#it_address").val(data.data[0].address)
+		$("#it_github").val(data.data[0].github)
+		$("#it_tistory").val(data.data[0].tistory)
+		$("#it_instagram").val(data.data[0].instagram)
+		$("#it_introduction").val(data.data[0].introduction)
+	}
+})
+
+$("#it_form").submit(function(){
+	    // 기본 폼 제출 동작을 막습니다.
+	    event.preventDefault();
+	
+	    // URLSearchParams 객체를 생성합니다.
+	    const url = window.location.href; // 현재 URL을 가져옵니다.
+	    const params = new URLSearchParams(new URL(url).search);
+	    
+	    // 'id' 파라미터 값을 가져옵니다.
+	    const id = params.get('id');
+	    console.log(id);
+	    
+		var actionUrl = "/intro/update/" + id;
+		$(this).attr("action", actionUrl);
+		console.log(actionUrl)
+		
+		$.ajax({
+			url: actionUrl,
+			type:"POST", //전송타입
+			data: $("#it_form").serialize(),
+			success:function(data){
+				if(data.code == "ok"){
+					location.href = "introAdmin.html";
+				}
+			}
+		})
+		return false;//전송취소
+	});
+</script>
+</body>
+</html>

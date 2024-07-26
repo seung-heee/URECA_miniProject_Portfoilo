@@ -18,23 +18,14 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "education")
+//@Table(name = "education")
 public class Education {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
-    private Integer intro_id;
-    
-    @Column(name = "year")
-    private Integer year;
-
-    @Lob
-    @Column(name = "description")
+	    
+    private String year;
     private String description;
-
-    @Column(length = 100)
     private String role;
 
-    // Getters and Setters
 }

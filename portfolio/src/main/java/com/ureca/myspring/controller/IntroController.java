@@ -30,6 +30,7 @@ public class IntroController {
 		return result;
 	}
 	
+// 	정보 조회
 	@GetMapping("/intro/list")
 	@ResponseBody
 	public Map<String, Object> list() {
@@ -39,7 +40,8 @@ public class IntroController {
 		result.put("data", list);
 		return result;
 	}
-
+	
+// 	정보 수정
 	@PostMapping("/intro/update/{id}")
 	@ResponseBody
 	public Map<String,Object> update(Intro itr) {
@@ -63,7 +65,6 @@ public class IntroController {
 			result.put("code", "error");
 			result.put("message","없거나 삭제된 정보입니다." );
 		}
-
 		return result ;
 	}
 }

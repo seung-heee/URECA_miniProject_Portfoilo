@@ -17,15 +17,9 @@ public class Activity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer intro_id;
+    private String year;
 
-    @Column(name = "year")
-    private Integer year;
-
-    @Lob
-    @Column(name = "description")
     private String description;
 
-    @Column(length = 100)
     private String role;
 }

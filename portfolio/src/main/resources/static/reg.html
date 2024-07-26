@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등록 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+  </head>
+<body>
+  <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+    <h1>활동 & 학력 등록</h1>
+
+	<form id="pro_form">
+		<div class="d-flex flex-row mx-auto align-items-center">
+		  <div class="d-flex flex-column py-3">
+		 	활동 기간 : <input type="text" id="intro_year" name="year" class="mb-3 pro_date">
+		    내용 : <input type="text" id="intro_description" name="description" class="mb-3 pro_title">
+		   	역할 : <textarea id="intro_role" name="role" class="pro_content"></textarea>
+		  </div>
+		</div> 
+		
+        <div class="text-center flex mx-auto">
+        	<input type="submit" value="수정 완료" class="w-100">
+        </div>
+	</form>
+  </div>
+  
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
+<script type="text/javascript">
+const url = window.location.href; 
+const params = new URLSearchParams(new URL(url).search);
+
+const id = params.get('id');
+const category = params.get('category'); 
+
+var requestUrl;
+var requestUpdateUrl;
+
+if (category === 'act') {
+	requestUrl = '/activity/list/' + id;
+	requestUpdateUrl = '/activity/update/' + id;
+} else if (category === 'edu') {
+	requestUrl = '/education/list/' + id;
+	requestUpdateUrl = '/education/update/' + id;
+} else {
+    alert("유효하지 않은 카테고리입니다.");
+    history.back(); // 이전 페이지로 돌아가기
+    throw new Error("유효하지 않은 카테고리");
+}
+
+// 수정
+$("#pro_form").submit(function(){	
+		var actionUrl = requestUpdateUrl;
+		$(this).attr("action", actionUrl);
+		console.log(actionUrl)
+		
+		$.ajax({
+			url: actionUrl,
+			type:"POST", //전송타입
+			data: $("#pro_form").serialize(),
+			success:function(data){
+				if(data.code == "ok"){
+					location.href = "introAdmin.html";
+				}
+			}
+		})
+		return false; //전송취소
+	});
+</script>
+</body>
+</html>

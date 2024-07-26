@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.ureca.myspring.entity.Intro;
 import com.ureca.myspring.entity.Project;
 import com.ureca.myspring.repository.ProjectRepository;
 

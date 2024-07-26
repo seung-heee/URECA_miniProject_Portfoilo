@@ -10,59 +10,123 @@
   </head>
 <body>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <h1>정보</h1>
-    <div class="mt-4">
-      <form action="intro/main" id="it_form" style="width: 320px;">
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_name">이름 : </label></div>
-          <div class="fw-bold it_name"></div>
-        </div>
-
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_role">직책 : </label></div>
-          <div class="fw-bold it_role"></div>
-        </div>
-
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_phone">전화번호 : </label></div>
-          <div class="fw-bold it_phone"></div>
-        </div>
-
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_email">이메일 : </label></div>
-          <div class="fw-bold it_email"></div>
-        </div>
-        
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_address">주소 : </label></div>
-          <div class="fw-bold it_address"></div>
-        </div>
-
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_github">깃허브 : </label></div>
-          <div class="fw-bold it_github"></div>
-        </div>
-
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_tistory">블로그 : </label></div>
-          <div class="fw-bold it_tistory"></div>
-        </div>
-
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_instagram">인스타그램 : </label></div>
-          <div class="fw-bold it_instagram"></div>
-        </div>
-        
-        <div class="editCell">
-          <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
-          <div class="fw-bold it_introduction"></div>
-        </div>
-
-        <div class="text-center flex w-100 mt-4">
-	        <!-- <input type="submit" value="수정하기" class="w-100"> -->
-       		<a id="editLink" href="#">수정하기</a>
-        </div>
-      </form>
+    <h1>소개 수정</h1>
+    <div class="d-flex flex-row justify-content-center">
+	    <div class="mt-4 mx-5">
+			<form action="intro/main" id="it_form" style="width: 320px;">
+				<div class="d-flex align-items-center justify-content-between mx-4">
+	    			<h2 class="text-center">정보</h2> 
+	    			<div class="text-center flex align-items-center">
+				 		<a id="editLink" href="#">수정하기</a>
+					</div>
+				</div>
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_name">이름 : </label></div>
+				  <div class="fw-bold it_name"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_role">직책 : </label></div>
+				  <div class="fw-bold it_role"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_phone">전화번호 : </label></div>
+				  <div class="fw-bold it_phone"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_email">이메일 : </label></div>
+				  <div class="fw-bold it_email"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_address">주소 : </label></div>
+				  <div class="fw-bold it_address"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_github">깃허브 : </label></div>
+				  <div class="fw-bold it_github"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_tistory">블로그 : </label></div>
+				  <div class="fw-bold it_tistory"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_instagram">인스타그램 : </label></div>
+				  <div class="fw-bold it_instagram"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
+				  <div class="fw-bold it_introduction"></div>
+				</div>
+				
+				
+			</form>
+	    </div>
+	    
+	    <div class="mt-4 mx-5 activity">
+	   		<div class="d-flex align-items-center justify-content-between mx-4">
+		        <h2 class="text-center">활동</h2>
+		        <div><a href="">등록</a></div>
+	        </div>
+			<div id="act" style="width: 320px;">
+				<!-- <div class="editCell">
+				  <div class="flex-fill"><label for="it_name">활동 기간 : </label></div>
+				  <div class="fw-bold it_name"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_role">활동 내용 : </label></div>
+				  <div class="fw-bold it_role"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_phone">역할 : </label></div>
+				  <div class="fw-bold it_phone"></div>
+				</div>
+				
+				<div class="text-center flex w-100 mt-4">
+					<input type="submit" value="수정하기" class="w-100">
+			 		<a id="editLink" href="#" class="mx-3">수정하기</a>
+			 		<a id="editLink" href="#" class="mx-3">삭제하기</a>
+				</div> -->
+	      	</div>
+	    </div>
+	    
+	    <div class="mt-4 mx-3 education">
+	   		<div class="d-flex align-items-center justify-content-between mx-4">
+		        <h2 class="text-center">학력</h2>
+		        <div><a href="">등록</a></div>
+	        </div>
+	        
+			<div id="edu" style="width: 320px;">
+				<!-- <div class="editCell">
+				  <div class="flex-fill"><label for="it_name">활동 기간 : </label></div>
+				  <div class="fw-bold it_name"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_role">활동 내용 : </label></div>
+				  <div class="fw-bold it_role"></div>
+				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_phone">역할 : </label></div>
+				  <div class="fw-bold it_phone"></div>
+				</div>
+				
+				<div class="text-center flex w-100 mt-4">
+					<input type="submit" value="수정하기" class="w-100">
+			 		<a id="editLink" href="#" class="mx-3">수정하기</a>
+			 		<a id="editLink" href="#" class="mx-3">삭제하기</a>
+				</div> -->
+			</div>
+	    </div>
     </div>
   </div>
   
@@ -73,7 +137,6 @@ $.ajax({
 	url:"/intro/list",
 	success:function(data){
 		let info = data.data[0]
-		console.log(info)
 		// 클래스 이름으로 요소를 얻는 간단한 함수
 	    const C = className => document.getElementsByClassName(className);
 
@@ -110,13 +173,29 @@ $.ajax({
 		success:function(data){
 			let s = "";
 			for(let d of data.data){
-				s+="<ul class='mb-3'>"
-				s+="<li class='fs-6'>"+ d.year +"</li>"
-				s+="<li class='fs-5 fw-bold'>"+ d.description +"</li>"
-				s+="<li class='fs-6'>"+ d.role +"</li>"
-				s+="</ul>"
+				s += "<div class='shadow p-3 mb-3 rounded'>";
+				s += "<div class='editCell'>";
+				s += "<div class='flex-fill'><label for='it_name'>활동 기간 : </label></div>";
+				s += "<div class='fw-bold it_name'>" + d.year + "</div>";
+				s += "</div>";
+
+				s += "<div class='editCell'>";
+				s += "<div class='flex-fill'><label for='it_role'>활동 내용 : </label></div>";
+				s += "<div class='fw-bold it_role'>" + d.description + "</div>";
+				s += "</div>";
+
+				s += "<div class='editCell'>";
+				s += "<div class='flex-fill'><label for='it_phone'>역할 : </label></div>";
+				s += "<div class='fw-bold it_phone'>" + d.role + "</div>";
+				s += "</div>";
+
+				s += "<div class='text-center flex w-100 mt-4'>";
+				s += "<a id='editLink' href='update.html?category=act&id=" + d.id + "' class='mx-3'>수정하기</a>";
+				s += "<div><a href='#' class='dltItem' data-id='" + d.id + "' data-type='act'>삭제하기</a></div>";s += "</div>";
+				s += "</div>";
+
 			}
-			$("#it_activity").html(s)
+			$("#act").html(s)
 		}
 	})
 	
@@ -125,16 +204,53 @@ $.ajax({
 		url:"/education/list",
 		success:function(data){
 			let s = "";
-			for(let d of data.data){
-				s+="<ul class='mb-3'>"
-				s+="<li class='fs-6'>"+ d.year +"</li>"
-				s+="<li class='fs-5 fw-bold'>"+ d.description +"</li>"
-				s+="<li class='fs-6'>"+ d.role +"</li>"
-				s+="</ul>"
+			for(let d of data.data) {
+				s += "<div class='shadow p-3 mb-3 rounded'>";
+				s += "<div class='editCell'>";
+				s += "<div class='flex-fill'><label for='it_name'>활동 기간 : </label></div>";
+				s += "<div class='fw-bold it_name'>" + d.year + "</div>";
+				s += "</div>";
+
+				s += "<div class='editCell'>";
+				s += "<div class='flex-fill'><label for='it_role'>활동 내용 : </label></div>";
+				s += "<div class='fw-bold it_role'>" + d.description + "</div>";
+				s += "</div>";
+
+				s += "<div class='editCell'>";
+				s += "<div class='flex-fill'><label for='it_phone'>역할 : </label></div>";
+				s += "<div class='fw-bold it_phone'>" + d.role + "</div>";
+				s += "</div>";
+
+				s += "<div class='text-center flex w-100 mt-4'>";
+				s += "<a id='editLink' href='update.html?category=edu&id=" + d.id + "' class='mx-3'>수정하기</a>";
+				s += "<div><a href='#' class='dltItem' data-id='" + d.id + "' data-type='edu'>삭제하기</a></div>";s += "</div>";
+				s += "</div>";
+
 			}
-			$("#it_education").html(s)
+			$("#edu").html(s)
 		}
 	})
+	
+// 삭제 버튼 클릭 이벤트 - 통합
+$(document).on("click", ".dltItem", function() {
+    let id = $(this).data("id"); // data-id 속성에서 ID 가져오기
+    let type = $(this).data("type"); // data-type 속성에서 타입 가져오기
+    let ans = confirm("해당 항목을 삭제하시겠습니까?");
+    if (ans) {
+        let url = type === 'act' ? "/activity/delete/" + id : "/education/delete/" + id; // URL 결정
+        $.ajax({
+            url: url,
+            success: function(data) {
+                console.log("삭제 완료");
+                if (data.code == "ok") {
+                    location.href = "introAdmin.html"; // 삭제 성공 시 페이지 이동
+                }
+            }
+        });
+        return false; // 전송 취소
+    }
+});
+
 </script>
 </body>
 </html>

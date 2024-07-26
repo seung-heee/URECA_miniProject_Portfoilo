@@ -66,5 +66,4 @@ public class IntroController {
 
 		return result ;
 	}
-
 }

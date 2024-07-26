@@ -45,6 +45,16 @@ public class ProjectController {
 		result.put("data", pr);
 		return result;
 	}
+
+//	프로젝트 등록
+	@PostMapping("/project/regist")
+	@ResponseBody
+	public Map<String,Object> regist(Project pro) {
+		Map<String, Object> result = new HashMap<>();
+		proRepo.save(pro);
+		result.put("code", "ok");
+		return result;
+	}
 	
 // 	개별 프로젝트 수정
 	@PostMapping("/project/update/{no}")

@@ -32,4 +32,8 @@ public class Intro {
 	private String github;
 	private String tistory;
     private String instagram;
+    
+
+    @Lob // 대용량 데이터를 위한 어노테이션
+    private byte[] image; // 이미지 바이트 배열 추가
 }

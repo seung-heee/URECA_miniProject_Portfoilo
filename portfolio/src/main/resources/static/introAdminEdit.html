@@ -13,52 +13,57 @@
     <h1>소개 수정</h1>
     <div class="mt-4">
     
-      <form id="it_form" style="width: 400px;">
+      <form id="it_form" enctype="multipart/form-data" style="width: 500px;">
         <div class="editCell">
-          <div class="flex-fill"><label for="it_name">이름 : </label></div>
-          <input type="text" id="it_name" name="name" required="required" placeholder=""><br/>
+          <div style="width: 30%"><label for="it_name">이름 : </label></div>
+          <input class="flex-fill" type="text" id="it_name" name="name" required="required"><br/>
         </div>
 
         <div class="editCell">
-          <div class="flex-fill"><label for="it_role">직책 : </label></div>
-          <input type="text" id="it_role" name="role" required="required" > <br/>
+          <div style="width: 30%"><label for="it_role">직책 : </label></div>
+          <input class="flex-fill" type="text" id="it_role" name="role" required="required" > <br/>
         </div>
 
         <div class="editCell">
-          <div class="flex-fill"><label for="it_phone">전화번호 : </label></div>
-          <input type="text" id="it_phone" name="phoneNumber" required="required"> <br/>
+          <div style="width: 30%"><label for="it_phone">전화번호 : </label></div>
+          <input class="flex-fill" type="text" id="it_phone" name="phoneNumber" required="required"> <br/>
         </div>
 
         <div class="editCell">
-          <div class="flex-fill"><label for="it_email">이메일 : </label></div>
-          <input type="text" id="it_email" name="email" required="required"> <br/>
+          <div style="width: 30%"><label for="it_email">이메일 : </label></div>
+          <input class="flex-fill" type="text" id="it_email" name="email" required="required"> <br/>
         </div>
         
         <div class="editCell">
-          <div class="flex-fill"><label for="it_address">주소 : </label></div>
-          <input type="text" id="it_address" name="address" required="required"> <br/>
+          <div style="width: 30%"><label for="it_address">주소 : </label></div>
+          <input class="flex-fill" type="text" id="it_address" name="address" required="required"> <br/>
         </div>
         
         <div class="editCell">
-          <div class="flex-fill"><label for="it_github">깃허브 : </label></div>
-          <input type="text" id="it_github" name="github" required="required"> <br/>
+          <div style="width: 30%"><label for="it_github">깃허브 : </label></div>
+          <input class="flex-fill" type="text" id="it_github" name="github" required="required"> <br/>
         </div>
         
         <div class="editCell">
-          <div class="flex-fill"><label for="it_tistory">티스토리 : </label></div>
-          <input type="text" id="it_tistory" name="tistory" required="required"> <br/>
+          <div style="width: 30%"><label for="it_tistory">티스토리 : </label></div>
+          <input class="flex-fill" type="text" id="it_tistory" name="tistory" required="required"> <br/>
         </div>
         
         <div class="editCell">
-          <div class="flex-fill"><label for="it_instagram">인스타그램 : </label></div>
-          <input type="text" id="it_instagram" name="instagram" required="required"> <br/>
+          <div style="width: 30%"><label for="it_instagram">인스타그램 : </label></div>
+          <input class="flex-fill" type="text" id="it_instagram" name="instagram" required="required"> <br/>
         </div>
         
         <div class="editCell">
-          <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
-          <textarea id="it_introduction" name="introduction" required="required"></textarea>
+          <div style="width: 30%"><label for="it_introduction">소개 : </label></div>
+          <textarea class="flex-fill" id="it_introduction" name="introduction" required="required"></textarea>
         </div>
-
+        
+        <div class="editCell">
+          <div  style="width: 30%"><label for="it_image">대표 이미지 : </label></div>
+          <input class="flex-fill" type="file" id="it_image" name="image" required="required" accept="image/*" >
+        </div>
+        
         <div class="text-center flex w-100 mt-4">
         	<input type="submit" value="수정 완료" class="w-100">
         </div>

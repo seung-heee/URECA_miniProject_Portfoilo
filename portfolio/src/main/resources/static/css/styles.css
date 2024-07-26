@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
 @font-face {
   font-family: 'Freesentation-9Black';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2404@1.0/Freesentation-9Black.woff2') format('woff2');
@@ -6,10 +8,10 @@
 }
 
 @font-face {
-  font-family: 'YClover-Bold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/YClover-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
+    font-family: 'YESMyoungjo-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_13@1.0/YESMyoungjo-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
@@ -24,7 +26,7 @@
 }
 
 .logoFont {
-  font-family: 'YClover-Bold';
+  font-family: 'YESMyoungjo-Regular';
 }
 
 .pptFont {

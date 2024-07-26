@@ -11,66 +11,72 @@
 <body>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
     <h1 class="my-5">소개 정보 관리</h1>
-    <div class="d-flex flex-row justify-content-center">
+    <div class="d-flex flex-row justify-content-center shadow p-3 mb-3 rounded">
 	    <div class="mt-4 mx-5">
 			<form action="intro/main" id="it_form" style="width: 320px;">
-				<div class="d-flex align-items-center justify-content-between mx-4">
+				<div class="d-flex align-items-center justify-content-between mx-4 mb-4">
 	    			<h2 class="text-center">정보</h2> 
 	    			<div class="text-center flex align-items-center">
-				 		<a id="editLink" href="#">수정하기</a>
+				 		<a id="editLink" href="#">
+				 			<button type="button" class="btn btn-outline-success">수정하기</button>
+				 		</a>
 					</div>
 				</div>
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_name">이름 : </label></div>
-				  <div class="fw-bold it_name"></div>
+				  <div class="fw-bold it_name" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_role">직책 : </label></div>
-				  <div class="fw-bold it_role"></div>
+				  <div class="fw-bold it_role" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_phone">전화번호 : </label></div>
-				  <div class="fw-bold it_phone"></div>
+				  <div class="fw-bold it_phone" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_email">이메일 : </label></div>
-				  <div class="fw-bold it_email"></div>
+				  <div class="fw-bold it_email" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_address">주소 : </label></div>
-				  <div class="fw-bold it_address"></div>
+				  <div class="fw-bold it_address" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_github">깃허브 : </label></div>
-				  <div class="fw-bold it_github"></div>
+				  <div class="fw-bold it_github" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_tistory">블로그 : </label></div>
-				  <div class="fw-bold it_tistory"></div>
+				  <div class="fw-bold it_tistory" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_instagram">인스타그램 : </label></div>
-				  <div class="fw-bold it_instagram"></div>
+				  <div class="fw-bold it_instagram" style="width: 70%; word-break: break-word;"></div>
 				</div>
 				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
-				  <div class="fw-bold it_introduction"></div>
+				  <div class="fw-bold it_introduction" style="width: 70%; word-break: break-word;"></div>
 				</div>
 			</form>
 	    </div>
 	    
 	    <div class="mt-4 mx-5 activity">
-	   		<div class="d-flex align-items-center justify-content-between mx-4">
+	   		<div class="d-flex align-items-center justify-content-between mx-4 mb-4">
 		        <h2 class="text-center">활동</h2>
-		        <div><a id="regLink_act" href="#">등록</a></div>
+		        <div>
+			        <a id="regLink_act" href="#">
+			        	<button type="button" class="btn btn-outline-success">등록하기</button>
+			        </a>
+		        </div>
 		        
 	        </div>
 			<div id="act" style="width: 320px;">
@@ -78,9 +84,13 @@
 	    </div>
 	    
 	    <div class="mt-4 mx-3 education">
-	   		<div class="d-flex align-items-center justify-content-between mx-4">
+	   		<div class="d-flex align-items-center justify-content-between mx-4 mb-4">
 		        <h2 class="text-center">학력</h2>
-		        <div><a id="regLink_edu" href="#">등록</a></div>
+		        <div>
+		        <a id="regLink_edu" href="#">
+		        	<button type="button" class="btn btn-outline-success">등록하기</button>
+		        </a>
+		        </div>
 	        </div>
 	        
 			<div id="edu" style="width: 320px;">
@@ -141,17 +151,17 @@ $.ajax({
 				s += "<div class='shadow p-3 mb-3 rounded'>";
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_name'>활동 기간 : </label></div>";
-				s += "<div class='fw-bold it_name'>" + d.year + "</div>";
+				s += "<div class='fw-bold it_name' style='width: 70%; word-break: break-word;'>" + d.year + "</div>";
 				s += "</div>";
 
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_role'>활동 내용 : </label></div>";
-				s += "<div class='fw-bold it_role'>" + d.description + "</div>";
+				s += "<div class='fw-bold it_role' style='width: 70%; word-break: break-word;'>" + d.description + "</div>";
 				s += "</div>";
 
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_phone'>역할 : </label></div>";
-				s += "<div class='fw-bold it_phone'>" + d.role + "</div>";
+				s += "<div class='fw-bold it_phone' style='width: 70%; word-break: break-word;'>" + d.role + "</div>";
 				s += "</div>";
 
 				s += "<div class='text-center d-flex justify-content-center w-100 mt-4'>";
@@ -177,17 +187,17 @@ $.ajax({
 				s += "<div class='shadow p-3 mb-3 rounded'>";
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_name'>활동 기간 : </label></div>";
-				s += "<div class='fw-bold it_name'>" + d.year + "</div>";
+				s += "<div class='fw-bold it_name' style='width: 70%; word-break: break-word;'>" + d.year + "</div>";
 				s += "</div>";
 
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_role'>활동 내용 : </label></div>";
-				s += "<div class='fw-bold it_role'>" + d.description + "</div>";
+				s += "<div class='fw-bold it_role' style='width: 70%; word-break: break-word;'>" + d.description + "</div>";
 				s += "</div>";
 
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_phone'>역할 : </label></div>";
-				s += "<div class='fw-bold it_phone'>" + d.role + "</div>";
+				s += "<div class='fw-bold it_phone' style='width: 70%; word-break: break-word;'>" + d.role + "</div>";
 				s += "</div>";
 
 				s += "<div class='text-center d-flex justify-content-center w-100 mt-4'>";

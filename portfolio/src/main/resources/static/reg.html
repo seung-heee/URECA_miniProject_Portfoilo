@@ -10,9 +10,9 @@
   </head>
 <body>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <h1>활동 & 학력 등록</h1>
+    <h1 id="title"></h1>
 
-	<form id="pro_form">
+	<form id="pro_form" class="shadow p-3 my-3 rounded p-5">
 		<div class="d-flex flex-row mx-auto align-items-center">
 		  <div class="d-flex flex-column py-3">
 		 	활동 기간 : <input type="text" id="intro_year" name="year" class="mb-3 pro_date">
@@ -35,18 +35,21 @@ const params = new URLSearchParams(new URL(url).search);
 const category = params.get('category'); 
 
 var requestUrl;
+var text;
 
 if (category === 'act') {
 	requestUrl = '/activity/regist'
+	text = '활동'
 } else if (category === 'edu') {
 	requestUrl = '/education/regist'
+	text = '학력'
 } else {
     alert("유효하지 않은 카테고리입니다.");
     history.back(); // 이전 페이지로 돌아가기
     throw new Error("유효하지 않은 카테고리");
 }
 
-console.log(requestUrl);
+$("#title").text(text + ' 등록');
 
 $("#pro_form").submit(function() {
     event.preventDefault();

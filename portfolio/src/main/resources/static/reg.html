@@ -32,42 +32,40 @@
 const url = window.location.href; 
 const params = new URLSearchParams(new URL(url).search);
 
-const id = params.get('id');
 const category = params.get('category'); 
 
 var requestUrl;
-var requestUpdateUrl;
 
 if (category === 'act') {
-	requestUrl = '/activity/list/' + id;
-	requestUpdateUrl = '/activity/update/' + id;
+	requestUrl = '/activity/regist'
 } else if (category === 'edu') {
-	requestUrl = '/education/list/' + id;
-	requestUpdateUrl = '/education/update/' + id;
+	requestUrl = '/education/regist'
 } else {
     alert("유효하지 않은 카테고리입니다.");
     history.back(); // 이전 페이지로 돌아가기
     throw new Error("유효하지 않은 카테고리");
 }
 
-// 수정
-$("#pro_form").submit(function(){	
-		var actionUrl = requestUpdateUrl;
-		$(this).attr("action", actionUrl);
-		console.log(actionUrl)
-		
-		$.ajax({
-			url: actionUrl,
-			type:"POST", //전송타입
-			data: $("#pro_form").serialize(),
-			success:function(data){
-				if(data.code == "ok"){
-					location.href = "introAdmin.html";
-				}
+console.log(requestUrl);
+
+$("#pro_form").submit(function() {
+    event.preventDefault();
+    
+	$.ajax({
+		url: requestUrl,
+		type: "POST",
+		data: $("#pro_form").serialize(),
+		success: function(data) {
+			alert("성공적으로 등록되었습니다!");
+			
+			if (data.code == "ok") {
+				location.href = "introAdmin.html";
 			}
-		})
-		return false; //전송취소
-	});
+		}
+	})
+	return false;
+})
+
 </script>
 </body>
 </html>

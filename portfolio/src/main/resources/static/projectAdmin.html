@@ -10,8 +10,11 @@
   </head>
 <body>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <h1>프로젝트 정보</h1>
-    <div><a href="projectReg.html">프로젝트 등록</a></div>
+    <h1 class="mt-5 mb-2">프로젝트 정보 관리</h1>
+    <a href="projectReg.html">
+	    <button type="button" class="btn btn-success">프로젝트 등록</button>
+	</a>
+
 
 	<div id="pro_body"></div>
   </div>
@@ -24,7 +27,7 @@ $.ajax({
 		let s = "";
 		
 		for(let d of data.data) {
-			s += "<div class='d-flex flex-row w-75 mx-auto mt-5 align-items-center'>";
+			s += "<div class='d-flex flex-row w-75 mx-auto my-3 align-items-center'>";
 			s += "<div class='d-flex flex-column w-50 py-5'>";
 			s += "<div class='fs-6 mb-3 pro_date'>" + d.date + "</div>";
 			s += "<div class='fs-2 mb-3 pro_title'>" + d.title + "</div>";

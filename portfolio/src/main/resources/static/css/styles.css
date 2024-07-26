@@ -56,3 +56,8 @@ ul, li {
   align-items: center;
   margin-bottom: 8px;
 }
+nav {
+    backdrop-filter: blur(10px); /* 블러 강도 조절 */
+    background-color: rgba(255, 255, 255, 0.8); /* 반투명 배경 */
+    transition: backdrop-filter 0.3s, background-color 0.3s; /* 부드러운 전환 */
+}

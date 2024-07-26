@@ -50,6 +50,16 @@ public class ActivityController {
 		return result;
 	}
 	
+//	활동 등록
+	@PostMapping("/activity/regist")
+	@ResponseBody
+	public Map<String,Object> regist(Activity act) {
+		Map<String, Object> result = new HashMap<>();
+		actRepo.save(act);
+		result.put("code", "ok");
+		return result;
+	}
+	
 // 	개별 활동 수정
 	@PostMapping("/activity/update/{id}")
 	@ResponseBody

@@ -10,7 +10,7 @@
   </head>
 <body>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
-    <h1>소개 수정</h1>
+    <h1 class="my-5">소개 정보 관리</h1>
     <div class="d-flex flex-row justify-content-center">
 	    <div class="mt-4 mx-5">
 			<form action="intro/main" id="it_form" style="width: 320px;">
@@ -64,67 +64,26 @@
 				  <div class="flex-fill"><label for="it_introduction">소개 : </label></div>
 				  <div class="fw-bold it_introduction"></div>
 				</div>
-				
-				
 			</form>
 	    </div>
 	    
 	    <div class="mt-4 mx-5 activity">
 	   		<div class="d-flex align-items-center justify-content-between mx-4">
 		        <h2 class="text-center">활동</h2>
-		        <div><a href="">등록</a></div>
+		        <div><a id="regLink_act" href="#">등록</a></div>
+		        
 	        </div>
 			<div id="act" style="width: 320px;">
-				<!-- <div class="editCell">
-				  <div class="flex-fill"><label for="it_name">활동 기간 : </label></div>
-				  <div class="fw-bold it_name"></div>
-				</div>
-				
-				<div class="editCell">
-				  <div class="flex-fill"><label for="it_role">활동 내용 : </label></div>
-				  <div class="fw-bold it_role"></div>
-				</div>
-				
-				<div class="editCell">
-				  <div class="flex-fill"><label for="it_phone">역할 : </label></div>
-				  <div class="fw-bold it_phone"></div>
-				</div>
-				
-				<div class="text-center flex w-100 mt-4">
-					<input type="submit" value="수정하기" class="w-100">
-			 		<a id="editLink" href="#" class="mx-3">수정하기</a>
-			 		<a id="editLink" href="#" class="mx-3">삭제하기</a>
-				</div> -->
 	      	</div>
 	    </div>
 	    
 	    <div class="mt-4 mx-3 education">
 	   		<div class="d-flex align-items-center justify-content-between mx-4">
 		        <h2 class="text-center">학력</h2>
-		        <div><a href="">등록</a></div>
+		        <div><a id="regLink_edu" href="#">등록</a></div>
 	        </div>
 	        
 			<div id="edu" style="width: 320px;">
-				<!-- <div class="editCell">
-				  <div class="flex-fill"><label for="it_name">활동 기간 : </label></div>
-				  <div class="fw-bold it_name"></div>
-				</div>
-				
-				<div class="editCell">
-				  <div class="flex-fill"><label for="it_role">활동 내용 : </label></div>
-				  <div class="fw-bold it_role"></div>
-				</div>
-				
-				<div class="editCell">
-				  <div class="flex-fill"><label for="it_phone">역할 : </label></div>
-				  <div class="fw-bold it_phone"></div>
-				</div>
-				
-				<div class="text-center flex w-100 mt-4">
-					<input type="submit" value="수정하기" class="w-100">
-			 		<a id="editLink" href="#" class="mx-3">수정하기</a>
-			 		<a id="editLink" href="#" class="mx-3">삭제하기</a>
-				</div> -->
 			</div>
 	    </div>
     </div>
@@ -167,12 +126,18 @@ $.ajax({
 	}
 })
 
+
 // 활동
 $.ajax({
 		url:"/activity/list",
 		success:function(data){
 			let s = "";
+			
+		    const regLink = document.getElementById('regLink_act');
+		    
 			for(let d of data.data){
+				regLink.href = "./reg.html?category=act"
+			    
 				s += "<div class='shadow p-3 mb-3 rounded'>";
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_name'>활동 기간 : </label></div>";
@@ -189,7 +154,7 @@ $.ajax({
 				s += "<div class='fw-bold it_phone'>" + d.role + "</div>";
 				s += "</div>";
 
-				s += "<div class='text-center flex w-100 mt-4'>";
+				s += "<div class='text-center d-flex justify-content-center w-100 mt-4'>";
 				s += "<a id='editLink' href='update.html?category=act&id=" + d.id + "' class='mx-3'>수정하기</a>";
 				s += "<div><a href='#' class='dltItem' data-id='" + d.id + "' data-type='act'>삭제하기</a></div>";s += "</div>";
 				s += "</div>";
@@ -204,7 +169,11 @@ $.ajax({
 		url:"/education/list",
 		success:function(data){
 			let s = "";
-			for(let d of data.data) {
+		    const regLink = document.getElementById('regLink_edu');
+		    
+			for(let d of data.data){
+				regLink.href = "./reg.html?category=edu";
+			    
 				s += "<div class='shadow p-3 mb-3 rounded'>";
 				s += "<div class='editCell'>";
 				s += "<div class='flex-fill'><label for='it_name'>활동 기간 : </label></div>";
@@ -221,7 +190,7 @@ $.ajax({
 				s += "<div class='fw-bold it_phone'>" + d.role + "</div>";
 				s += "</div>";
 
-				s += "<div class='text-center flex w-100 mt-4'>";
+				s += "<div class='text-center d-flex justify-content-center w-100 mt-4'>";
 				s += "<a id='editLink' href='update.html?category=edu&id=" + d.id + "' class='mx-3'>수정하기</a>";
 				s += "<div><a href='#' class='dltItem' data-id='" + d.id + "' data-type='edu'>삭제하기</a></div>";s += "</div>";
 				s += "</div>";

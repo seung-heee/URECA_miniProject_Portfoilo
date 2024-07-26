@@ -51,6 +51,15 @@ public class EducationController {
 		return result;
 	}
 	
+//	활동 등록
+	@PostMapping("/education/regist")
+	@ResponseBody
+	public Map<String,Object> regist(Education edu) {
+		Map<String, Object> result = new HashMap<>();
+		eduRepo.save(edu);
+		result.put("code", "ok");
+		return result;
+	}
 // 	개별 활동 수정
 	@PostMapping("/education/update/{id}")
 	@ResponseBody

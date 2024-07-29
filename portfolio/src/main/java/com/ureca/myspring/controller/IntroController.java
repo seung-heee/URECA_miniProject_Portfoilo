@@ -1,10 +1,12 @@
 package com.ureca.myspring.controller;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -41,6 +43,28 @@ public class IntroController {
 	public Map<String, Object> list() {
 		Map<String, Object> result = new HashMap<>();
 		List<Intro> list = introRepo.findAll(Sort.by(Sort.Direction.DESC, "id"));
+		
+	    List<Map<String, Object>> data = list.stream().map(intro -> {
+	        Map<String, Object> introData = new HashMap<>();
+	        introData.put("id", intro.getId());
+	        introData.put("name", intro.getName());
+	        introData.put("role", intro.getRole());
+	        introData.put("phoneNumber", intro.getPhoneNumber());
+	        introData.put("email", intro.getEmail());
+	        introData.put("address", intro.getAddress());
+	        introData.put("github", intro.getGithub());
+	        introData.put("tistory", intro.getTistory());
+	        introData.put("instagram", intro.getInstagram());
+	        introData.put("introduction", intro.getIntroduction());
+
+	        // Base64 인코딩된 이미지 문자열 포함
+	        if (intro.getImage() != null) {
+	            introData.put("image", Base64.getEncoder().encodeToString(intro.getImage()));
+	        }
+
+	        return introData;
+	    }).collect(Collectors.toList());
+	    
 		result.put("code", "ok");
 		result.put("data", list);
 		return result;
@@ -50,12 +74,10 @@ public class IntroController {
 	@PostMapping("/intro/update/{id}")
 	@ResponseBody
 	public Map<String, Object> update(@PathVariable("id") Long id,
-            
             @ModelAttribute Intro itr) {
 		Map<String, Object> result = new HashMap<>();
 		Optional<Intro> it = introRepo.findById(itr.getId());
 		
-		System.out.println(it);
 		if(it.isPresent()) {
 			Intro intro = it.get();
 			intro.setName(itr.getName());

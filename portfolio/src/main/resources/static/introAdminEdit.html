@@ -58,11 +58,11 @@
                 <textarea class="flex-fill" id="it_introduction" name="introduction" required="required"></textarea>
             </div>
 
-            <!-- 이미지 -->
-            <div class="editCell">
-                <div style="width: 30%"><label for="it_image">대표 이미지 : </label></div>
-                <input class="flex-fill" type="file" id="it_image" name="image" required="required" accept="image/*">
-            </div>
+           <!-- 이미지 -->
+           <div class="editCell">
+               <div style="width: 30%"><label for="it_image">대표 이미지 : </label></div>
+               <input class="flex-fill" type="file" id="it_image" name="image" required="required" accept="image/*">
+           </div>
 
             <div class="text-center flex w-100 mt-4">
                 <input type="submit" value="수정 완료" class="w-100">
@@ -81,15 +81,23 @@ $.ajax({
             history.back()
             return
         }
-        $("#it_name").val(data.data[0].name)
-        $("#it_role").val(data.data[0].role)
-        $("#it_phone").val(data.data[0].phoneNumber)
-        $("#it_email").val(data.data[0].email)
-        $("#it_address").val(data.data[0].address)
-        $("#it_github").val(data.data[0].github)
-        $("#it_tistory").val(data.data[0].tistory)
-        $("#it_instagram").val(data.data[0].instagram)
-        $("#it_introduction").val(data.data[0].introduction)
+        const info = data.data[0];
+        
+        $("#it_name").val(info.name);
+        $("#it_role").val(info.role);
+        $("#it_phone").val(info.phoneNumber);
+        $("#it_email").val(info.email);
+        $("#it_address").val(info.address);
+        $("#it_github").val(info.github);
+        $("#it_tistory").val(info.tistory);
+        $("#it_instagram").val(info.instagram);
+        $("#it_introduction").val(info.introduction);
+        
+        // 이미지 미리보기 설정
+        if (info.image) {
+        	$("#image_preview").attr("src", "data:image/jpeg;base64," + info.image);
+        	$("#it_image").attr("src", "data:image/jpeg;base64," + info.image);
+        }
     }
 })
 

@@ -10,6 +10,7 @@
   </head>
 <body>
   <div class="d-flex flex-column justify-content-center align-items-center min-vh-100">
+   	<a href="index.html">HOME ></a>
     <h1 class="my-5">소개 정보 관리</h1>
     <div class="d-flex flex-row justify-content-center shadow p-3 mb-3 rounded">
 	    <div class="mt-4 mx-5">
@@ -22,6 +23,12 @@
 				 		</a>
 					</div>
 				</div>
+				
+				<div class="editCell">
+				  <div class="flex-fill"><label for="it_name">대표 사진 : </label></div>
+				  <img id="image" src="" alt="대표 사진" class="it_image">
+				</div>
+				
 				<div class="editCell">
 				  <div class="flex-fill"><label for="it_name">이름 : </label></div>
 				  <div class="fw-bold it_name" style="width: 70%; word-break: break-word;"></div>
@@ -101,6 +108,17 @@
   
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" ></script>
 <script type="text/javascript">
+//숫자 배열을 Base64 문자열로 변환하는 함수
+function arrayBufferToBase64(buffer) {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+        binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+}
+
 /* 메인 소개 */
 $.ajax({
 	url:"/intro/list",
@@ -130,23 +148,28 @@ $.ajax({
 	    setTextContent('it_tistory', info.tistory);
 	    setTextContent('it_instagram', info.instagram);
 	    
+	 	// 이미지 태그의 src 속성에 Base64 문자열 적용
+        if (info.image) {
+            const imageSrc = `data:image/jpeg;base64,${info.image}`;
+            $("#image").attr("src", imageSrc);
+        }
+	 	
 	 	// 링크 수정
 	    const editLink = document.getElementById('editLink');
 	    editLink.href = "./introAdminEdit.html?id=" + info.id;
 	}
 })
 
-
+const regLink = document.getElementById('regLink_act');
 // 활동
 $.ajax({
 		url:"/activity/list",
 		success:function(data){
 			let s = "";
 			
-		    const regLink = document.getElementById('regLink_act');
-		    
+			regLink.href = "./reg.html?category=act"
+					
 			for(let d of data.data){
-				regLink.href = "./reg.html?category=act"
 			    
 				s += "<div class='shadow p-3 mb-3 rounded'>";
 				s += "<div class='editCell'>";
@@ -180,9 +203,9 @@ $.ajax({
 		success:function(data){
 			let s = "";
 		    const regLink = document.getElementById('regLink_edu');
-		    
+			regLink.href = "./reg.html?category=edu";
+			
 			for(let d of data.data){
-				regLink.href = "./reg.html?category=edu";
 			    
 				s += "<div class='shadow p-3 mb-3 rounded'>";
 				s += "<div class='editCell'>";
